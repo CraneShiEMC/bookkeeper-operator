@@ -238,6 +238,10 @@ type BookkeeperClusterSpec struct {
 	// reference is removed.
 	// Defaults to true
 	BlockOwnerDeletion *bool `json:"blockOwnerDeletion,omitempty"`
+
+	// Labels to be added to the bookie pods
+	// +optional
+	Labels map[string]string `json:"labels"`
 }
 
 // BookkeeperImageSpec defines the fields needed for a BookKeeper Docker image
@@ -484,6 +488,10 @@ func (s *BookkeeperClusterSpec) withDefaults() (changed bool) {
 		s.BlockOwnerDeletion = &boolTrue
 	}
 
+	if s.Labels == nil {
+		s.Labels = map[string]string{}
+	}
+
 	return changed
 }
 
@@ -625,6 +633,11 @@ func (bk *BookkeeperCluster) ValidateBookkeeperVersion(filename string) error {
 
 func (bk *BookkeeperCluster) LabelsForBookie() map[string]string {
 	labels := bk.LabelsForBookkeeperCluster()
+	if bk.Spec.Labels != nil {
+		for k, v := range bk.Spec.Labels {
+			labels[k] = v
+		}
+	}
 	labels["component"] = "bookie"
 	return labels
 }
