@@ -43,7 +43,7 @@ func DownwardAPIEnv() []corev1.EnvVar {
 func PodAntiAffinity(component string, clusterName string) *corev1.Affinity {
 	return &corev1.Affinity{
 		PodAntiAffinity: &corev1.PodAntiAffinity{
-			PreferredDuringSchedulingIgnoredDuringExecution: []corev1.WeightedPodAffinityTerm{
+			RequiredDuringSchedulingIgnoredDuringExecution: []corev1.WeightedPodAffinityTerm{
 				{
 					Weight: 100,
 					PodAffinityTerm: corev1.PodAffinityTerm{
