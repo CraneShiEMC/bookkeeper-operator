@@ -1,4 +1,4 @@
-module github.com/pravega/bookkeeper-operator
+module github.com/CraneShiEMC/bookkeeper-operator
 
 go 1.13
 
