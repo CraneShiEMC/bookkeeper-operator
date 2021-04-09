@@ -11,6 +11,7 @@ require (
 	github.com/onsi/gomega v1.9.0
 	github.com/opennota/check v0.0.0-20180911053232-0c771f5545ff // indirect
 	github.com/operator-framework/operator-sdk v0.17.0
+	github.com/pravega/bookkeeper-operator v0.1.3 // indirect
 	github.com/rogpeppe/go-internal v1.5.2 // indirect
 	github.com/samuel/go-zookeeper v0.0.0-20190923202752-2cc03de413da
 	github.com/securego/gosec v0.0.0-20200401082031-e946c8c39989 // indirect
