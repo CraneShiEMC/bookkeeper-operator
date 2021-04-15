@@ -432,6 +432,7 @@ func (s *BookkeeperClusterSpec) withDefaults(bk *BookkeeperCluster) (changed boo
 		changed = true
 	}
 
+	log.Printf("config.TestMode: %t", config.TestMode)
 	if !config.TestMode && s.Replicas < MinimumBookkeeperReplicas {
 		changed = true
 		s.Replicas = MinimumBookkeeperReplicas
