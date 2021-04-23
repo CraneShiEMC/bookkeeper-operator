@@ -192,6 +192,7 @@ func makeBookiePodSpec(bk *v1alpha1.BookkeeperCluster) *corev1.PodSpec {
 				Name:      s[0],
 				MountPath: p[1],
 				SubPath:   s[1],
+				ReadOnly:  false,
 			}
 			cmVolumeMounts = append(cmVolumeMounts, m)
 		}
