@@ -12,6 +12,7 @@ package bookkeepercluster
 
 import (
 	"fmt"
+	"github.com/pravega/bookkeeper-operator/pkg/controller/config"
 	"strconv"
 	"strings"
 
@@ -274,6 +275,9 @@ func makeBookiePodSpec(bk *v1alpha1.BookkeeperCluster) *corev1.PodSpec {
 					FailureThreshold:    bk.Spec.Probes.LivenessProbe.FailureThreshold,
 					SuccessThreshold:    bk.Spec.Probes.LivenessProbe.SuccessThreshold,
 					TimeoutSeconds:      bk.Spec.Probes.LivenessProbe.TimeoutSeconds,
+				},
+				SecurityContext: &corev1.SecurityContext{
+					Privileged: &config.TestMode,
 				},
 			},
 		},
